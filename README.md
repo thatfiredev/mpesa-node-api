@@ -6,27 +6,27 @@ Node.js wrapper for the M-Pesa Mozambique API.
 
 1. Install it using npm:
     ```shell
-        npm install mpesa-node-api
+    npm install mpesa-node-api
     ```
    
 1. Create the configuration `.env` file on your root directory based on [`.env.example`](.env.example):
     ```shell
-        cp .env.example .env
+    cp .env.example .env
     ```
    
-1. Fill in the blank lines on your .env file with configuration you got from
- the [M-Pesa Developer Portal](https://developer.mpesa.vm.co.mz/). See an example:
+1. Use your favorite text editor to edit the `.env` file and fill in the blank lines with configuration
+ you got from the [M-Pesa Developer Portal](https://developer.mpesa.vm.co.mz/). See an example:
     ```shell
-        MPESA_PUBLIC_KEY=example_public_key
-        MPESA_API_HOST=api.sandbox.vm.co.mz
-        MPESA_API_KEY=example_api_key
-        MPESA_ORIGIN=developer.mpesa.vm.co.mz
-        MPESA_SERVICE_PROVIDER_CODE=171717
+    MPESA_PUBLIC_KEY=example_public_key
+    MPESA_API_HOST=api.sandbox.vm.co.mz
+    MPESA_API_KEY=example_api_key
+    MPESA_ORIGIN=developer.mpesa.vm.co.mz
+    MPESA_SERVICE_PROVIDER_CODE=171717
     ``` 
    
 1. In your JavaScript file, import the package using `require()`:
     ```js
-       const mpesa = require('mpesa-node-api');
+    const mpesa = require('mpesa-node-api');
     ```
    
 ### Supported Transactions
@@ -52,7 +52,7 @@ Example C2B response:
 ```js
 const mpesa = require('mpesa-node-api');
 
-mpesa.initiate_b2c(/* amount */ 10, /* msisdn */ 258843330333, /* transaction ref */ 'T12344C', /*3rd party ref*/ 'ref1')
+mpesa.initiate_c2b(/* amount */ 10, /* msisdn */ 258843330333, /* transaction ref */ 'T12344C', /*3rd party ref*/ 'ref1')
     .then(function(response) {
       // logging the response
       console.log(response);
@@ -66,7 +66,7 @@ mpesa.initiate_b2c(/* amount */ 10, /* msisdn */ 258843330333, /* transaction re
 ```js
 const mpesa = require('mpesa-node-api');
 
-mpesa.initiate_c2b(/* amount */ 10, /* msisdn */ 258843330333, /* transaction ref */ 'T12344C', /*3rd party ref*/ 'ref1')
+mpesa.initiate_b2c(/* amount */ 10, /* msisdn */ 258843330333, /* transaction ref */ 'T12344C', /*3rd party ref*/ 'ref1')
     .then(function(response) {
       // logging the response
       console.log(response);
@@ -77,9 +77,9 @@ mpesa.initiate_c2b(/* amount */ 10, /* msisdn */ 258843330333, /* transaction re
 ```
 
 ### Planned Support:
--[ ] B2B
--[ ] Reversal
--[ ] Query Transaction Status
+- [ ] B2B
+- [ ] Reversal
+- [ ] Query Transaction Status
 
 ## Getting a copy for development
 

@@ -1,4 +1,4 @@
-require('dotenv-safe').config();
+require('dotenv').config();
 const axios = require('axios').default;
 const crypto = require('crypto');
 const constants = require('constants');
