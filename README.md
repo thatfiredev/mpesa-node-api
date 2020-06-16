@@ -9,10 +9,7 @@ Node.js wrapper for the M-Pesa Mozambique API.
     npm install mpesa-node-api
     ```
    
-1. Create the configuration `.env` file on your root directory based on [`.env.example`](.env.example):
-    ```shell
-    cp .env.example .env
-    ```
+1. Create the configuration `.env` file on your root directory based on [`.env.example`](.env.example).
    
 1. Use your favorite text editor to edit the `.env` file and fill in the blank lines with configuration
  you got from the [M-Pesa Developer Portal](https://developer.mpesa.vm.co.mz/). See an example:
