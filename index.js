@@ -24,6 +24,7 @@ function initialize_api_from_dotenv() {
             origin: process.env.MPESA_ORIGIN,
             serviceProviderCode: process.env.MPESA_SERVICE_PROVIDER_CODE
         };
+        validateConfig(mpesaConfig);
         console.log("Using configuration from .env file");
     } else {
         console.log("Using the configuration specified in initializeApi()");
@@ -34,7 +35,7 @@ function log_required_config_arg(argName) {
     return "Please provide a valid " + argName + " in the configuration when calling initializeApi()";
 }
 
-module.exports.initializeApi = function (configParams) {
+function validateConfig(configParams) {
     if (!configParams.baseUrl) {
         throw log_required_config_arg("baseUrl")
     }
@@ -50,6 +51,10 @@ module.exports.initializeApi = function (configParams) {
     if (!configParams.serviceProviderCode) {
         throw log_required_config_arg("serviceProviderCode")
     }
+}
+
+module.exports.initializeApi = function (configParams) {
+    validateConfig(configParams);
     mpesaConfig = configParams;
 };
 
