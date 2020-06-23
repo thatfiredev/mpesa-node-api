@@ -70,7 +70,7 @@ module.exports.initiate_c2b = async function (amount, msisdn, transaction_ref, t
                 "input_CustomerMSISDN": msisdn + "",
                 "input_Amount": amount + "",
                 "input_ThirdPartyReference": thirdparty_ref,
-                "input_ServiceProviderCode": mpesaConfig.serviceProviderCode
+                "input_ServiceProviderCode": mpesaConfig.serviceProviderCode + ""
             }
         });
         return response.data;
@@ -100,7 +100,7 @@ module.exports.initiate_b2c = async function (amount, msisdn, transaction_ref, t
                 "input_CustomerMSISDN": msisdn + "",
                 "input_Amount": amount + "",
                 "input_ThirdPartyReference": thirdparty_ref,
-                "input_ServiceProviderCode": mpesaConfig.serviceProviderCode
+                "input_ServiceProviderCode": mpesaConfig.serviceProviderCode + ""
             }
         });
         return response.data;
