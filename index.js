@@ -25,31 +25,31 @@ function initialize_api_from_dotenv() {
             serviceProviderCode: process.env.MPESA_SERVICE_PROVIDER_CODE
         };
         validateConfig(mpesaConfig);
-        console.log("Using configuration from .env file");
+        console.log("Using M-Pesa environment configuration");
     } else {
-        console.log("Using the configuration specified in initializeApi()");
+        console.log("Using custom M-Pesa configuration");
     }
 }
 
-function log_required_config_arg(argName) {
+function required_config_arg(argName) {
     return "Please provide a valid " + argName + " in the configuration when calling initializeApi()";
 }
 
 function validateConfig(configParams) {
     if (!configParams.baseUrl) {
-        throw log_required_config_arg("baseUrl")
+        throw required_config_arg("baseUrl")
     }
     if (!configParams.apiKey) {
-        throw log_required_config_arg("apiKey")
+        throw required_config_arg("apiKey")
     }
     if (!configParams.publicKey) {
-        throw log_required_config_arg("publicKey")
+        throw required_config_arg("publicKey")
     }
     if (!configParams.origin) {
-        throw log_required_config_arg("origin")
+        throw required_config_arg("origin")
     }
     if (!configParams.serviceProviderCode) {
-        throw log_required_config_arg("serviceProviderCode")
+        throw required_config_arg("serviceProviderCode")
     }
 }
 
