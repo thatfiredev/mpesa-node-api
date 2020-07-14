@@ -2,7 +2,7 @@ const mpesa = require('../index');
 const expect = require('chai').expect;
 
 describe('config', function () {
-    describe('initializeApi throws an error when required config is missing', function () {
+    it('initializeApi throws an error when required config is missing', function () {
         const actualConfig = {
             baseUrl: "api.mpesa.co.mz"
         };
@@ -13,7 +13,7 @@ describe('config', function () {
         }
     });
 
-    describe('initializeApi works with valid config', function () {
+    it('initializeApi works with valid config', function () {
         const actualConfig = {
             baseUrl: "api.mpesa.co.mz",
             apiKey: "apiKey",
