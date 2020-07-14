@@ -78,6 +78,23 @@ mpesa.initiate_b2c(/* amount */ 10, /* msisdn */ 258843330333, /* transaction re
 - [ ] Reversal
 - [ ] Query Transaction Status
 
+### Using custom configuration
+
+Optionally, you can also use custom configuration to initialize the API:
+
+```js
+const mpesa = require('mpesa-node-api');
+
+mpesa.initializeApi({
+    baseUrl: "YOUR_MPESA_API_HOST",
+    apiKey: "YOUR_MPESA_API_KEY",
+    publicKey: "YOUR_MPESA_PUBLIC_KEY",
+    origin: "YOUR_MPESA_ORIGIN",
+    serviceProviderCode: "YOUR_MPESA_SERVICE_PROVIDER_CODE"
+});
+mpesa.initiate_c2b( 10, 258843330333, 'T12344C', 'ref1');
+```
+
 ## Getting a copy for development
 
 These instructions will get you a copy of the project up and running on
