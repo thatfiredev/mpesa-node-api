@@ -1,6 +1,6 @@
 {
   "name": "mpesa-node-api",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Node.js library for M-Pesa API (Mozambique)",
   "main": "index.js",
   "scripts": {
