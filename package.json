@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/rosariopfernandes/mpesa-node-api",
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "constants": "0.0.2",
     "crypto": "^1.0.1",
     "dotenv": "^8.2.0"
