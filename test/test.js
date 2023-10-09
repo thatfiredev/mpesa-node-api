@@ -1,5 +1,5 @@
-const mpesa = require('../index');
-const expect = require('chai').expect;
+import { initializeApi } from '../index';
+import { expect } from 'chai';
 
 describe('config', function () {
     it('initializeApi throws an error when required config is missing', function () {
@@ -7,7 +7,7 @@ describe('config', function () {
             baseUrl: "api.mpesa.co.mz"
         };
         try {
-            mpesa.initializeApi(actualConfig)
+            initializeApi(actualConfig)
         } catch (e) {
             expect(e).to.equal('Please provide a valid apiKey in the configuration when calling initializeApi()')
         }
@@ -22,7 +22,7 @@ describe('config', function () {
             serviceProviderCode: 171717
         };
         expect(function () {
-            mpesa.initializeApi(actualConfig)
+            initializeApi(actualConfig)
         }).to.not.throw();
     });
 });
