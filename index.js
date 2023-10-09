@@ -2,6 +2,7 @@ import { config } from "dotenv";
 import axios from "axios";
 import { publicEncrypt } from "crypto";
 import { RSA_PKCS1_PADDING } from "constants";
+import { isValidPhoneNumber, parsePhoneNumber } from "libphonenumber-js";
 
 config();
 let mpesaConfig;
@@ -40,7 +41,11 @@ function initialize_api_from_dotenv() {
 }
 
 function required_config_arg(argName) {
-    throw new Error("Please provide a valid " + argName + " in the configuration when calling initializeApi()")
+  throw new Error(
+    "Please provide a valid " +
+      argName +
+      " in the configuration when calling initializeApi()"
+  );
 }
 
 function validateConfig(configParams) {
@@ -58,6 +63,20 @@ function validateConfig(configParams) {
   }
   if (!configParams.serviceProviderCode) {
     required_config_arg("serviceProviderCode");
+  }
+}
+
+/**
+ * Formating phone number to 258 + 84/85 + XXXXXXX
+ * @param {*} msisdn
+ * @returns
+ */
+function parseMsisdn(msisdn) {
+  if (!isValidPhoneNumber(msisdn, "MZ")) {
+    throw new Error("Invalid phone number");
+  } else {
+    const phoneNumber = parsePhoneNumber(msisdn, "MZ");
+    return phoneNumber.countryCallingCode + phoneNumber.nationalNumber;
   }
 }
 
@@ -90,7 +109,7 @@ export async function initiate_c2b(
       },
       data: {
         input_TransactionReference: transaction_ref,
-        input_CustomerMSISDN: msisdn + "",
+        input_CustomerMSISDN: parseMsisdn(msisdn) + "",
         input_Amount: amount + "",
         input_ThirdPartyReference: thirdparty_ref,
         input_ServiceProviderCode: mpesaConfig.serviceProviderCode + "",
@@ -98,7 +117,11 @@ export async function initiate_c2b(
     });
     return response.data;
   } catch (e) {
-    return e.response.data;
+    if (e.response?.data) {
+      throw e.response.data;
+    } else {
+      throw e;
+    }
   }
 }
 
@@ -122,7 +145,7 @@ export async function initiate_b2c(
       },
       data: {
         input_TransactionReference: transaction_ref,
-        input_CustomerMSISDN: msisdn + "",
+        input_CustomerMSISDN: parseMsisdn(msisdn) + "",
         input_Amount: amount + "",
         input_ThirdPartyReference: thirdparty_ref,
         input_ServiceProviderCode: mpesaConfig.serviceProviderCode + "",
