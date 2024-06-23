@@ -117,3 +117,33 @@ module.exports.initiate_b2c = async function (amount, msisdn, transaction_ref, t
         }
     }
 };
+
+module.exports.intiate_b2b = async function (input_Amount, input_TransactionReference, input_ThirdPartyReference, input_PrimaryPartyCode, input_ReceiverPartyCode) {
+    initialize_api_from_dotenv();
+    try {
+        let response;
+        response = await axios({
+            method: 'post',
+            url: 'https://' + mpesaConfig.baseUrl + ':18349/ipg/v1x/b2bPayment/',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + _getBearerToken(mpesaConfig.publicKey, mpesaConfig.apiKey),
+                'Origin': mpesaConfig.origin
+            },
+            data: {
+                "input_TransactionReference": input_TransactionReference,
+                "input_Amount": input_Amount + "",
+                "input_ThirdPartyReference": input_ThirdPartyReference,
+                "input_PrimaryPartyCode": input_PrimaryPartyCode,
+                "input_ReceiverPartyCode": input_ReceiverPartyCode
+            }
+        });
+        return response.data;
+    } catch(e) {
+        if (e.response && e.response.data) {
+            throw e.response.data;
+        } else {
+            throw e;
+        }
+    }
+}
