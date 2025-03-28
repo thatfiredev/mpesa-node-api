@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "target": "esnext", 
+    "declaration": true, 
+    "declarationDir": "./types",
+    "outDir": "./dist",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "sourceMap": true,
+    "types": ["mocha", "chai"],
+  },
+  "include": ["**/*.ts"],
+  "exclude": [
+    "node_modules"
+  ]
+}

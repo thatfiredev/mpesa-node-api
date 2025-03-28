@@ -2,9 +2,18 @@
   "name": "mpesa-node-api",
   "version": "1.1.0",
   "description": "Node.js library for M-Pesa API (Mozambique)",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "types/index.d.ts",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "build": "tsc"
+  },
+  "mocha": {
+    "require": "ts-node/register",
+    "extension": [
+      "ts"
+    ],
+    "spec": "test/**/*.ts"
   },
   "repository": {
     "type": "git",
@@ -20,13 +29,19 @@
   },
   "homepage": "https://github.com/rosariopfernandes/mpesa-node-api",
   "dependencies": {
-    "axios": "^0.21.1",
+    "axios": "^1.8.4",
     "constants": "0.0.2",
     "crypto": "^1.0.1",
     "dotenv": "^8.2.0"
   },
   "devDependencies": {
+    "@types/chai": "^5.2.1",
+    "@types/dotenv": "^6.1.1",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^22.13.14",
     "chai": "^4.2.0",
-    "mocha": "^8.0.1"
+    "mocha": "^11.1.0",
+    "ts-node": "^9.1.1",
+    "typescript": "^5.8.2"
   }
 }
